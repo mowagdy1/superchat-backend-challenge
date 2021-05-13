@@ -1,11 +1,14 @@
 package com.mowagdy.superchat.service
 
-import com.mowagdy.superchat.dto.ContactRequest
-import com.mowagdy.superchat.dto.ContactResponse
+import com.mowagdy.superchat.dto.ContactCreationRequest
+import com.mowagdy.superchat.dto.ContactListingResponse
+import com.mowagdy.superchat.dto.ContactMessageSendingRequest
 
 interface ContactService {
 
-    fun list(): List<ContactResponse>
+    fun list(): List<ContactListingResponse>
 
-    fun create(request: ContactRequest)
+    fun create(request: ContactCreationRequest)
+
+    fun sendMessageToContact(contactId: Long, request: ContactMessageSendingRequest)
 }

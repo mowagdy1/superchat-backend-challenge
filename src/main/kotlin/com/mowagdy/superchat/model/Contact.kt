@@ -1,8 +1,10 @@
 package com.mowagdy.superchat.model
 
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Entity
-data class Contact(var name: String = "",
-                   var email: String = "") : PanacheEntity()
+data class Contact(@Id @GeneratedValue var id: Long? = null,
+                   var name: String = "",
+                   var email: String = "")

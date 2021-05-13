@@ -1,7 +1,8 @@
 package com.mowagdy.superchat.resource
 
-import com.mowagdy.superchat.dto.ContactRequest
-import com.mowagdy.superchat.dto.ContactResponse
+import com.mowagdy.superchat.dto.ContactCreationRequest
+import com.mowagdy.superchat.dto.ContactListingResponse
+import com.mowagdy.superchat.dto.ContactMessageSendingRequest
 import com.mowagdy.superchat.service.ContactService
 import javax.inject.Inject
 import javax.ws.rs.*
@@ -15,12 +16,19 @@ class ContactResource {
     internal lateinit var contactService: ContactService
 
     @GET
-    fun listContacts(): List<ContactResponse> {
+    fun listContacts(): List<ContactListingResponse> {
         return contactService.list()
     }
 
     @POST
-    fun createBrand(request: ContactRequest) {
+    fun createContact(request: ContactCreationRequest) {
         contactService.create(request)
     }
+
+    @POST
+    @Path("/{id}/messages")
+    fun sendMessageToContact(@PathParam("id") id: Long, request: ContactMessageSendingRequest) {
+        contactService.sendMessageToContact(id, request)
+    }
+
 }
