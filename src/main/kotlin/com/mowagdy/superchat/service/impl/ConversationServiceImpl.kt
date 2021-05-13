@@ -13,7 +13,7 @@ class ConversationServiceImpl : ConversationService {
     internal lateinit var conversationRepository: ConversationRepository
 
     override fun list(): List<ConversationListingResponse> {
-        return conversationRepository.listAll().map { ConversationListingResponse(it.id, it.contactId) }
+        return conversationRepository.listAll().map { ConversationListingResponse(it.id!!, it.contact.id!!, it.contact.name) }
     }
 
 }
