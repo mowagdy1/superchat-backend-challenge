@@ -1,17 +1,13 @@
 # superchat-backend-challenge project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+This project uses Kotlin, Quarkus, H2, & Hibernate.
 
 ## Running the application in dev mode
 
-You can run your application in dev mode that enables live coding using:
+You can run the application in dev mode using:
 ```shell script
 ./mvnw compile quarkus:dev
 ```
-
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 
 ## Packaging and running the application
 
@@ -43,16 +39,16 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 
 You can then execute your native executable with: `./target/superchat-backend-challenge-1.0.0-SNAPSHOT-runner`
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html.
+## API Documentation
 
-## Related guides
+Once the application is started, you can check any of these choices: 
 
-- Kotlin ([guide](https://quarkus.io/guides/kotlin)): Write your services in Kotlin
+- The OpenAPI documentation at http://localhost:8080/q/openapi
+- And Swagger UI documentation is accessible at http://localhost:8080/q/swagger-ui
 
-## Provided examples
+## Using The Application
 
-### RESTEasy JSON serialisation using Jackson
+At this project, you add contacts. Then you can send messages to any of them.
+When you send a message, you can use placeholders that will by substituted at the backend such as: `NAME_PLACEHOLDER`, `EMAIL_PLACEHOLDER` & `BITCOIN_PLACEHOLDER`.
 
-This example demonstrate RESTEasy JSON serialisation by letting you list, add and remove quark types from a list. Quarked!
-
-[Related guide section...](https://quarkus.io/guides/rest-json#creating-your-first-json-rest-service)
+After sending the message, the backend send it to a webhook that you can change it from the `application.properties` file.
